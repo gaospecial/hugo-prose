@@ -60,6 +60,9 @@ params:
     licensed under MIT. The full source is available at
     https://github.com/yihui/hugo-prose.
 
+security:
+  allowContent: ['.*']
+
 markup:
   highlight:
     codeFences: false
