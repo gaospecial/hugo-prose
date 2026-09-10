@@ -42,7 +42,16 @@
     <div class="card-flex">
     <div class="card-body">
     {{ with .Params.categories }}
-    {{ range first 1 . }}
+    {{/* 定义临时变量 */}}
+    {{ $cats := . }}
+    
+    {{/* 如果 categories 不是切片（是单个字符串），将其包装为切片 */}}
+    {{ if not (reflect.IsSlice $cats) }}
+      {{ $cats = slice $cats }}
+    {{ end }}
+
+    {{/* 现在可以安全地取第一个并迭代了 */}}
+    {{ range first 1 $cats }}
     <div class="categories">
       <a href="{{ relURL (print "/categories/" . "/" | urlize) }}">{{ . }}</a>
     </div>

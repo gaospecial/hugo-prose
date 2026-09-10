@@ -253,6 +253,7 @@ th, td { padding: 5px; }
   .list main .post-card { flex: inherit; }
   .menu ul, .footer { flex-wrap: wrap; }
   .search input, .search #menu-search a { font-size: 1em; }
+  main, .menu ul, .footer, .single section, .post-nav { max-width: 100%; }
 }
 
 /* dark theme */
