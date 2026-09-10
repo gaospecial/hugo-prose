@@ -11,6 +11,14 @@
   }
   toc?.classList.add('side', 'side-left');
 
+  // A sticky sidebar taller than the viewport can't be scrolled into view, so
+  // cap its height and let it scroll internally to keep long TOCs reachable.
+  if (toc && getComputedStyle(toc).position === 'sticky') {
+    const h = menu ? menu.offsetHeight : 0;
+    toc.style.maxHeight = 'calc(100vh - ' + (h + 8) + 'px)';
+    toc.style.overflowY = 'auto';
+  }
+
   // add the edit link to the menu "Suggest an edit"
   let s = d.querySelector('li#menu-edit');
   if (s) {
